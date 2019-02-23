@@ -1,0 +1,8 @@
+package ca.utoronto.shawnhu.linkedout;
+
+public class map {
+    double location_x = 0.0;
+    double location_y = 0.0;
+
+}
+
