@@ -31,8 +31,9 @@ public class MainActivity extends AppCompatActivity
 
 
     CompactCalendarView compactCalendar;
-    TextView txtDisplay;
+    TextView txtEvent,txtTime,txtName,txtLocation;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMM yyyy", Locale.getDefault());
+    String[][] all_info = new String[3][3];
 
 
     @Override
@@ -41,15 +42,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -60,14 +52,20 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        txtDisplay = findViewById(R.id.txt_event);
+        final tutor tutor_ev1 = new tutor("Math Tutoring", "12 - 1 pm", "Simrrat Bains", "UTMSU");
+        final tutor tutor_ev2 = new tutor("Economics Tutoring", "1 - 4 am", "Stephen Tran", "York University");
+
+        txtEvent = findViewById(R.id.txt_event);
+        txtTime = findViewById(R.id.txt_time);
+        txtName = findViewById(R.id.txt_name);
+        txtLocation = findViewById(R.id.txt_location);
 
         compactCalendar = findViewById(R.id.compactcalendar_view);
         compactCalendar.setUseThreeLetterAbbreviation(true);
 
-        final Event ev1 = new Event(Color.BLUE, 1550754000000L, "Fuck I don't know");
+        final Event ev1 = new Event(Color.BLUE, 1550754000000L);
         compactCalendar.addEvent(ev1);
-        final Event ev2 = new Event(Color.RED, 1550840400000L, "Fuck I don't know again");
+        final Event ev2 = new Event(Color.GREEN, 1550840400000L);
         compactCalendar.addEvent(ev2);
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
@@ -75,11 +73,19 @@ public class MainActivity extends AppCompatActivity
             public void onDayClick(Date dateClicked) {
 
                 if (dateClicked.toString().compareTo("Thu Feb 21 00:00:00 EST 2019") == 0) {
-                    txtDisplay.setText(ev1.getData().toString());
-                }else if (dateClicked.toString().compareTo("Fri Feb 22 00:00:00 EST 2019") == 0) {
-                    txtDisplay.setText(ev2.getData().toString());
+                    String[] temp_data = tutor_ev1.all_info();
+                    txtEvent.setText(temp_data[0]);
+                    txtTime.setText(temp_data[1]);
+                    txtName.setText(temp_data[2]);
+                    txtLocation.setText(temp_data[3]);
+                } else if (dateClicked.toString().compareTo("Fri Feb 22 00:00:00 EST 2019") == 0) {
+                    String[] temp_data = tutor_ev2.all_info();
+                    txtEvent.setText(temp_data[0]);
+                    txtTime.setText(temp_data[1]);
+                    txtName.setText(temp_data[2]);
+                    txtLocation.setText(temp_data[3]);
                 } else {
-                    txtDisplay.setText("No Events Planned for that day");
+                    txtEvent.setText("No Events");
                 }
 
 
