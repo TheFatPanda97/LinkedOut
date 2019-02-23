@@ -69,14 +69,13 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         calendar_view main_calendar = new calendar_view();
-        test_1 t1 = new test_1();
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         if (id == R.id.nav_camera) {
             fragmentManager.beginTransaction().replace(R.id.main, main_calendar).commit();
 
         } else if (id == R.id.nav_gallery) {
-            fragmentManager.beginTransaction().replace(R.id.main, t1).commit();
+
 
         } else if (id == R.id.nav_slideshow) {
 
