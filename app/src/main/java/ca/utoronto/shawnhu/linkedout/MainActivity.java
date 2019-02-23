@@ -1,5 +1,8 @@
 package ca.utoronto.shawnhu.linkedout;
 
+//import android.app.FragmentManager;
+
+import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -91,6 +94,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
+
+        } else if (id == R.id.profile_drawer){
+
+            profile f1 = new profile();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.main, f1).commit();
 
         }
 
