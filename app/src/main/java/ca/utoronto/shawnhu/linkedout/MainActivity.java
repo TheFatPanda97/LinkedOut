@@ -7,7 +7,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +29,12 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        messaging message = new messaging();
+        fragmentManager.beginTransaction().replace(R.id.main, message).commit();
+
+
     }
 
     @Override
@@ -70,13 +75,15 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         calendar_view main_calendar = new calendar_view();
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        subspace all_tutor = new subspace();
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
         if (id == R.id.nav_camera) {
             fragmentManager.beginTransaction().replace(R.id.main, main_calendar).commit();
 
         } else if (id == R.id.nav_gallery) {
 
+            fragmentManager.beginTransaction().replace(R.id.main, all_tutor).commit();
 
         } else if (id == R.id.nav_slideshow) {
 
