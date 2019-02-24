@@ -83,9 +83,14 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+            mapfrag mf = new mapfrag();
+            fragmentManager.beginTransaction().replace(R.id.main, mf).commit();
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -98,7 +103,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.profile_drawer){
 
             profile f1 = new profile();
-            FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.main, f1).commit();
 
         }
