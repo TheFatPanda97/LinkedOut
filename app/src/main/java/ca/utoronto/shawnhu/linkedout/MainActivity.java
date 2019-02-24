@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        profile pp = new profile();
-        fragmentManager.beginTransaction().replace(R.id.main, pp).commit();
+        login log = new login();
+        fragmentManager.beginTransaction().replace(R.id.main, log).commit();
 
 
     }
